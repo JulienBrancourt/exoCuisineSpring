@@ -48,4 +48,21 @@ public class CategorieService {
     public Categorie getCategorieById(UUID id) {
         return (categories.stream().filter(c -> c.getId().equals(id)).findFirst().orElse(null));
     }
+
+    public Categorie addCategorie(Categorie categorie) {
+        categorie.setId(UUID.randomUUID());
+        categories.add(categorie);
+        return categorie;
+    }
+
+    public void deleteCategorie(UUID categorie) {
+        categories.removeIf(c -> c.getId().equals(categorie));
+    }
+
+    public Categorie updateCategorie(Categorie categorie) {
+        Categorie categorieToUpdate = getCategorieById(categorie.getId());
+        categorieToUpdate.setDescription(categorie.getDescription());
+        categorieToUpdate.setNom(categorie.getNom());
+        return categorieToUpdate;
+    }
 }

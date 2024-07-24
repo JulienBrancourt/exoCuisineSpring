@@ -1,5 +1,6 @@
 package org.example.exocuisinespring.model;
 
+import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -13,12 +14,16 @@ import java.util.UUID;
 @NoArgsConstructor
 public class Categorie {
     private UUID id;
+
+    @NotBlank(message = "Il faut un nom !")
     private String nom;
+
+    @NotBlank (message = "Il faut un nom !")
     private String description;
 
     @Override
     public String toString() {
-        return "Categorie{" +
+        return "{" +
                 "nom='" + nom + '\'' +
                 ", description='" + description + '\'' +
                 '}';

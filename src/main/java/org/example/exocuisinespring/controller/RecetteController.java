@@ -1,5 +1,6 @@
 package org.example.exocuisinespring.controller;
 
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import org.example.exocuisinespring.model.Categorie;
 import org.example.exocuisinespring.model.Recette;
@@ -46,8 +47,10 @@ public class RecetteController {
     }
 
     @PostMapping("/formulaireRecette")
-    public String addRecette(@NotBlank @ModelAttribute("recette") Recette recette, BindingResult bindingResult) {
+    public String addRecette(@Valid @ModelAttribute("recette") Recette recette, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
+            List<Categorie> categories = categorieService.getCategories();
+            model.addAttribute("categories", categories);
             return "formRecette";
         } else {
             if (recette.getId() == null) {
