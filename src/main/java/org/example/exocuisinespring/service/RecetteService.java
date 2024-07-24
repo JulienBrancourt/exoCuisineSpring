@@ -73,7 +73,8 @@ public class RecetteService {
         recetteToUpdate.setNom(recette.getNom());
         recetteToUpdate.setIngredients(recette.getIngredients());
         recetteToUpdate.setInstructions(recette.getInstructions());
-        recetteToUpdate.setCategorie(recette.getCategorie());
+        recetteToUpdate.setCategorie(categorieService.getCategorieById(recette.getIdCategorie()));
+//        recetteToUpdate.setCategorie(recette.getCategorie());
         return recetteToUpdate;
     }
 }

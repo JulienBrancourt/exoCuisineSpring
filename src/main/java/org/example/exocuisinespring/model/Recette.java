@@ -25,7 +25,6 @@ public class Recette {
 
     @NotBlank (message = "Il faut des instruction !")
     private String instructions;
-    @NotNull (message = "Il faut une catégorie !")
     private Categorie categorie;
     private UUID idCategorie;
 

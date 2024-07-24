@@ -51,6 +51,7 @@ public class RecetteController {
         if (bindingResult.hasErrors()) {
             List<Categorie> categories = categorieService.getCategories();
             model.addAttribute("categories", categories);
+            System.out.println("erreur qq part");
             return "formRecette";
         } else {
             if (recette.getId() == null) {
